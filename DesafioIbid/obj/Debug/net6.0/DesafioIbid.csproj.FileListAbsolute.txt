@@ -30,3 +30,13 @@ C:\ws\ws-c#\DesafioIbid\DesafioIbid\obj\Debug\net6.0\refint\DesafioIbid.dll
 C:\ws\ws-c#\DesafioIbid\DesafioIbid\obj\Debug\net6.0\DesafioIbid.pdb
 C:\ws\ws-c#\DesafioIbid\DesafioIbid\obj\Debug\net6.0\DesafioIbid.genruntimeconfig.cache
 C:\ws\ws-c#\DesafioIbid\DesafioIbid\obj\Debug\net6.0\ref\DesafioIbid.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\ws\ws-c#\DesafioIbid\DesafioIbid\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
