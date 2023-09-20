@@ -36,10 +36,7 @@ namespace DesafioIbid.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductModel>>  CreateProduct([FromBody] ProductModel productModel)
         {
-            if (productModel.Name.Length > 50)
-            {
-                return BadRequest();
-            }
+           
             ProductModel product = await _product.CreateProduct(productModel);
 
             return Ok(product); ;
