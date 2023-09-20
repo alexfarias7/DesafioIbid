@@ -1,15 +1,28 @@
+using DesafioIbid.Datas;
+using DesafioIbid.Repositories;
+using DesafioIbid.Repositories.interfaces;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddEntityFrameworkSqlServer()
+    .AddDbContext<SystemProductDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+   );
+
+//builder.Services
+ //   .AddDbContext<SystemProductDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("ServerConnection")));
+
+builder.Services.AddScoped<IProduct, ProductRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -1,4 +1,5 @@
-﻿using DesafioIbid.Models;
+﻿using DesafioIbid.Datas.Maps;
+using DesafioIbid.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DesafioIbid.Datas
@@ -9,6 +10,27 @@ namespace DesafioIbid.Datas
             :base(options)
         { }
 
-        public DbSet<ProductModel> Products { get; set; }
+        public DbSet<ProductModel> ProductsTable {  get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ProductMap());
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", false, true)
+                .Build();
+
+
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DataBase"));
+
+
+        }
+
     }
 }

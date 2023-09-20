@@ -1,4 +1,5 @@
 ﻿using DesafioIbid.Models;
+using DesafioIbid.Repositories.interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioIbid.Controllers
@@ -6,51 +7,61 @@ namespace DesafioIbid.Controllers
     [Route("/api/products")]
     public class ProductController : ControllerBase
     {
+        private readonly IProduct _product;
+
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult<List<ProductModel>>> GetAll()
         {
-            return Ok();
+            List<ProductModel> products = await _product.GetAll();
+            return Ok(products);
         }
 
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult<ProductModel>> GetById(int id)
         {
-            return Ok();
+
+            ProductModel product = await _product.GetById(id);
+            return Ok(product);
+        }
+
+        [HttpGet("name")]
+        public async Task<ActionResult<ProductModel>> GetByName(string name)
+        {
+            ProductModel product = await _product.GetByName(name);
+            return Ok(product);
         }
 
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody] ProductModel product)
+        public async Task<ActionResult<ProductModel>>  CreateProduct([FromBody] ProductModel productModel)
         {
-            if (product.Name.Length > 50)
+            if (productModel.Name.Length > 50)
             {
                 return BadRequest();
             }
+            ProductModel product = await _product.CreateProduct(productModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
+            return Ok(product); ;
         }
 
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id, [FromBody] ProductModel product)
+        public async Task<ActionResult<ProductModel>> UpdateProduct([FromBody] ProductModel productModel, int id)
         {
-            if (product.Description.Length < 3)
-            {
-                return BadRequest();
-            }
-            return NoContent();
+ 
+            productModel.Id = id;
+            ProductModel product= await _product.UpdateProduct(productModel, id);
+
+            return Ok(product);
         }
 
 
-        [HttpDelete("id")]
-        public IActionResult DeleteProduct(int id, [FromBody] ProductModel product)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProductModel>> Delete(int id )
         {
-            if (product.Id.Equals(id))
-            {
-                return BadRequest();
-            }
-            return NoContent();
+            bool deleted = await _product.DeleteProduct(id);
+            return Ok(deleted);
         }
     }
 }
